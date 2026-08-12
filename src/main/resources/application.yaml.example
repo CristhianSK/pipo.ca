@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: pipo.ca
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/seu_banco
+    username: seu_usuario
+    password: sua_senha
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+tmdb:
+  api:
+    key: SUA_CHAVE_TMDB_AQUI
