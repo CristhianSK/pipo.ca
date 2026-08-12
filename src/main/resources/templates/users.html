@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-br"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{~/css/main.css}">
+    <title>Usuarios</title>
+</head>
+<body>
+<header class="page-header">
+    <h3>Cadastro de Usuários</h3>
+</header>
+
+<div>
+    <form action="/users" method="post">
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" name="name" placeholder="Digite o nome completo">
+        </div>
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" name="email" placeholder="exemplo@email.com">
+        </div>
+        <div class="form-group">
+            <label>Idade</label>
+            <input type="number" name="idade" placeholder="Ex: 22">
+        </div>
+        <button type="submit">Enviar Cadastro</button>
+    </form>
+</div>
+
+<hr class="divider">
+
+<section>
+    <h4>Usuários Cadastrados</h4>
+    <div class="users">
+        <div th:each="user: ${users}" class="user">
+            <div class="user-avatar">👤</div>
+            <div class="user-name">
+                <span th:text="${user.getName()}">Nome do Usuário</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-action">
+    <form action="/home" method="get" class="nav-form">
+        <button type="submit">Retornar para Início</button>
+    </form>
+</footer>
+</body>
+</html>
