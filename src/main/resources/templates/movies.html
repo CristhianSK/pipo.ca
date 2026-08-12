@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{~/css/main.css}">
+    <title>Filmes</title>
+</head>
+<body>
+<header class="page-header">
+    <h3>Catálogo de Filmes</h3>
+
+    <form action="/movies/search" method="get" class="search-form">
+        <input type="text" name="busca" placeholder="Digite o título do filme...">
+        <button type="submit">Buscar</button>
+    </form>
+</header>
+
+<div class="movies-grid">
+    <div th:each="movie: ${filmes}" class="movie-card">
+        <div class="poster-wrapper">
+            <img th:src="${'https://image.tmdb.org/t/p/w500' + movie.getPoster_path()}" alt="Pôster">
+        </div>
+        <div class="movie-info">
+            <span th:text="${movie.getTitle()}">Título do Filme</span>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-action">
+    <form action="/home" method="get" class="nav-form">
+        <button type="submit">Retornar para Início</button>
+    </form>
+</footer>
+</body>
+</html>
